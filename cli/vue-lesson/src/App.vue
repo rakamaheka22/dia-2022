@@ -1,63 +1,39 @@
 <template>
   <!-- HTML -->
-  <div></div>
+  <div>
+    <p>{{ message }} : {{ count }}</p>
+    <span>Status : {{ isActive }}</span>
+    <p>
+      Id : <strong>{{ item.id }}</strong>
+      Title : <strong>{{ item.title }}</strong>
+    </p>
+  </div>
 </template>
 
 <script>
 // JS
 export default {
   name: 'App',
-  beforeCreate() {
-    // dipanggil langsung bersamaan saat instance berhasil dibuat
-    console.log('Before Create');
-  },
-  created() {
-    // dipanggil setelah instance berhasil dibuat dan setelah beforeCreate
-    console.log('Created');
-  },
-  beforeMount() {
-    // dipanggil sebelum melakukan render HTML pada sebuah component
-    console.log('Before Mount');
+  data() {
+    return {
+      count: 0,
+      message: 'Message Count',
+      isActive: false,
+      lists: [],
+      item: {
+        id: 0,
+        title: 'Item #1',
+      },
+    };
   },
   mounted() {
-    // dipanggil setelah render HTML dan component siap digunakan
-    console.log('Mounted');
-  },
-  beforeUpdate() {
-    // dipanggil langsung bersamaan saat ada perubahan data
-    console.log('Before Update');
+    setTimeout(() => {
+        this.count = 1;
+        this.isActive = true;
+    }, 2000);
   },
   updated() {
-    // dipanggil setelah ada perubahan data
-    console.log('Updated');
-  },
-  activated() {
-    // dipanggil saat keep-alive pada dynamic component aktif
-    console.log('Activated');
-  },
-  deactivated() {
-    // dipanggil saat keep-alive pada dynamic component tidak aktif
-    console.log('Deactivated');
-  },
-  beforeUnmount() {
-    // dipanggil sebelum component akan dilepas
-    console.log('Before Unmount');
-  },
-  unmounted() {
-    // dipanggil setelah component dilepas
-    console.log('Unmounted');
-  },
-  errorCaptured() {
-    // dipanggil saat ada error
-    console.log('Error Captured');
-  },
-  renderTracked() {
-    // dipanggil pertama kali saat render data di HTML
-    console.log('Render Tracked');
-  },
-  renderTriggered() {
-    // dipanggil saat adanya perubahan render data di HTML
-    console.log('Render Triggered');
+    this.message = 'Message Updated! Count';
   },
 }
 </script>
