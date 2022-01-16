@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- HTML -->
+  <div></div>
 </template>
 
 <script>
-
+// JS
 export default {
   name: 'App',
 }
 </script>
 
 <style>
+/* CSS */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

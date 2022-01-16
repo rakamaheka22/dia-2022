@@ -1,4 +1,6 @@
-// setup instalasi vue
+// JS
+
+// Setup Instalasi Vue
 const App = {
     data() {
         return {
