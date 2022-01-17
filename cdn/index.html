@@ -13,8 +13,7 @@
         <p>{{ message }} : {{ count }}</p>
         <span>Status : {{ isActive }}</span>
         <p>
-            Id : <strong>{{ item.id }}</strong>
-            Title : <strong>{{ item.title }}</strong>
+            {{ showItem() }}
         </p>
     </div>
     <script src="https://unpkg.com/vue@next"></script>

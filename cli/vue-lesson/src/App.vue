@@ -4,8 +4,7 @@
     <p>{{ message }} : {{ count }}</p>
     <span>Status : {{ isActive }}</span>
     <p>
-      Id : <strong>{{ item.id }}</strong>
-      Title : <strong>{{ item.title }}</strong>
+      {{ showItem() }}
     </p>
   </div>
 </template>
@@ -28,13 +27,24 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-        this.count = 1;
-        this.isActive = true;
+      this.incrementCount();
     }, 2000);
   },
   updated() {
-    this.message = 'Message Updated! Count';
+    this.updateMessage('Message Updated! Count');
   },
+  methods: {
+    incrementCount() {
+      this.count += 1;
+      if (this.count > 0) this.isActive = true;
+    },
+    updateMessage(message) {
+      this.message = message;
+    },
+    showItem() {
+      return 'Id: ' + this.item.id + ' Title: ' + this.item.title;
+    }
+  }
 }
 </script>
 
