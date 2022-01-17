@@ -6,6 +6,14 @@
     <p>
       {{ showItem() }}
     </p>
+    <p>
+      Check for more details <a v-bind:href="url" :title="title">Here</a>
+    </p>
+    <img v-bind:src="image" :alt="`Gambar ${title}`" />
+    <div>
+      <button v-on:click="incrementCount">Tambah Count</button>
+      <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
+    </div>
   </div>
 </template>
 
@@ -15,6 +23,10 @@ export default {
   name: 'App',
   data() {
     return {
+      countItem: 2,
+      title: 'Vue 3',
+      image: 'https://via.placeholder.com/150/',
+      url: 'https://v3.vuejs.org/',
       count: 0,
       message: 'Message Count',
       isActive: false,
@@ -31,9 +43,12 @@ export default {
     }, 2000);
   },
   updated() {
-    this.updateMessage('Message Updated! Count');
+      this.updateMessage('Message Updated! Count');
   },
   methods: {
+    dynamicIncrementCount(count) {
+      this.count += count;
+    },
     incrementCount() {
       this.count += 1;
       if (this.count > 0) this.isActive = true;
@@ -42,7 +57,7 @@ export default {
       this.message = message;
     },
     showItem() {
-      return 'Id: ' + this.item.id + ' Title: ' + this.item.title;
+      return `Id: ${this.item.id} Title: ${this.item.title}`;
     }
   }
 }
