@@ -15,6 +15,14 @@
         <p>
             {{ showItem() }}
         </p>
+        <p>
+            Check for more details <a v-bind:href="url" :title="title">Here</a>
+        </p>
+        <img v-bind:src="image" :alt="`Gambar ${title}`" />
+        <div>
+            <button v-on:click="incrementCount">Tambah Count</button>
+            <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
+        </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./main.js"></script>
