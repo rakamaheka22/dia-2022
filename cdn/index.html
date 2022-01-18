@@ -11,7 +11,7 @@
     <div id="app">
         <!-- HTML -->
         <h2>{{ fullName }}</h2>
-        <p>{{ message }} : {{ count }}</p>
+        <p>{{ message }} : {{ count }} {{ messageCount }}</p>
         <span>Status : {{ status }}</span>
         <p>
         {{ getItem }}
@@ -23,6 +23,7 @@
         <div>
             <button v-on:click="incrementCount">Tambah Count</button>
             <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
+            <button v-on:click="count--">Kurang Count</button>
         </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>

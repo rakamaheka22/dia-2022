@@ -12,6 +12,7 @@ const App = {
       url: 'https://v3.vuejs.org/',
       count: 0,
       message: 'Message Count',
+      messageCount: '',
       isActive: false,
       lists: [],
       item: {
@@ -35,6 +36,16 @@ const App = {
         const name = newValue.split(' ');
         this.firstName = name[0];
         this.lastName = name[1];
+      }
+    }
+  },
+  watch: {
+    count(newValue) {
+      if (newValue > 10) {
+        this.messageCount = 'Count melebihi 10 item';
+      }
+      if (newValue === 0) {
+        this.isActive = false;
       }
     }
   },

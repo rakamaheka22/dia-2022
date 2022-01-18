@@ -2,7 +2,7 @@
   <!-- HTML -->
   <div>
     <h2>{{ fullName }}</h2>
-    <p>{{ message }} : {{ count }}</p>
+    <p>{{ message }} : {{ count }} {{ messageCount }}</p>
     <span>Status : {{ status }}</span>
     <p>
       {{ getItem }}
@@ -14,6 +14,7 @@
     <div>
       <button v-on:click="incrementCount">Tambah Count</button>
       <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
+      <button v-on:click="count--">Kurang Count</button>
     </div>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
       url: 'https://v3.vuejs.org/',
       count: 0,
       message: 'Message Count',
+      messageCount: '',
       isActive: false,
       lists: [],
       item: {
@@ -55,6 +57,16 @@ export default {
         const name = newValue.split(' ');
         this.firstName = name[0];
         this.lastName = name[1];
+      }
+    }
+  },
+  watch: {
+    count(newValue) {
+      if (newValue > 10) {
+        this.messageCount = 'Count melebihi 10 item';
+      }
+      if (newValue === 0) {
+        this.isActive = false;
       }
     }
   },
