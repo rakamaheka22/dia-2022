@@ -3,11 +3,11 @@
   <div>
     <h2>{{ fullName }}</h2>
     <p>{{ message }} : {{ count }} {{ messageCount }}</p>
-    <span>Status : {{ status }}</span>
+    <span :class="[{ active: isActive }, { 'not-active': !isActive }]">Status : {{ status }}</span>
     <p>
       {{ getItem }}
     </p>
-    <p>
+    <p :style="{ fontWeight: isActive ? 'bold' : 'normal' }">
       Check for more details <a v-bind:href="url" :title="title">Here</a>
     </p>
     <img v-bind:src="image" :alt="`Gambar ${title}`" />
@@ -106,5 +106,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.active {
+  color: green;
+}
+
+.not-active {
+  color: red;
 }
 </style>

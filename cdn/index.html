@@ -12,11 +12,11 @@
         <!-- HTML -->
         <h2>{{ fullName }}</h2>
         <p>{{ message }} : {{ count }} {{ messageCount }}</p>
-        <span>Status : {{ status }}</span>
+        <span :class="[{ active: isActive }, { 'not-active': !isActive }]">Status : {{ status }}</span>
         <p>
         {{ getItem }}
         </p>
-        <p>
+        <p :style="{ fontWeight: isActive ? 'bold' : 'normal' }">
             Check for more details <a v-bind:href="url" :title="title">Here</a>
         </p>
         <img v-bind:src="image" :alt="`Gambar ${title}`" />

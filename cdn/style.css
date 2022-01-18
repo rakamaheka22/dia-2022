@@ -1,1 +1,8 @@
 /* CSS */
+.active {
+  color: green;
+}
+
+.not-active {
+  color: red;
+}
