@@ -1,10 +1,11 @@
 <template>
   <!-- HTML -->
   <div>
+    <h2>{{ fullName }}</h2>
     <p>{{ message }} : {{ count }}</p>
-    <span>Status : {{ isActive }}</span>
+    <span>Status : {{ status }}</span>
     <p>
-      {{ showItem() }}
+      {{ getItem }}
     </p>
     <p>
       Check for more details <a v-bind:href="url" :title="title">Here</a>
@@ -23,6 +24,8 @@ export default {
   name: 'App',
   data() {
     return {
+      firstName: 'John',
+      lastName: 'Doe',
       countItem: 2,
       title: 'Vue 3',
       image: 'https://via.placeholder.com/150/',
@@ -37,9 +40,28 @@ export default {
       },
     };
   },
+  computed: {
+    getItem() {
+      return `Id: ${this.item.id} Title: ${this.item.title}`;
+    },
+    status() {
+      return this.isActive ? 'Yes' : 'No';
+    },
+    fullName: {
+      get() {
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set(newValue) {
+        const name = newValue.split(' ');
+        this.firstName = name[0];
+        this.lastName = name[1];
+      }
+    }
+  },
   mounted() {
     setTimeout(() => {
       this.incrementCount();
+      this.fullName = 'John Cena';
     }, 2000);
   },
   updated() {

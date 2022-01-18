@@ -10,10 +10,11 @@
 <body>
     <div id="app">
         <!-- HTML -->
+        <h2>{{ fullName }}</h2>
         <p>{{ message }} : {{ count }}</p>
-        <span>Status : {{ isActive }}</span>
+        <span>Status : {{ status }}</span>
         <p>
-            {{ showItem() }}
+        {{ getItem }}
         </p>
         <p>
             Check for more details <a v-bind:href="url" :title="title">Here</a>
