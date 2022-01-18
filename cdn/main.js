@@ -8,7 +8,7 @@ const App = {
       lastName: 'Doe',
       countItem: 2,
       title: 'Vue 3',
-      image: 'https://via.placeholder.com/150/',
+      image: 'https://via.placeholder.com/250/',
       url: 'https://v3.vuejs.org/',
       count: 0,
       message: 'Message Count',

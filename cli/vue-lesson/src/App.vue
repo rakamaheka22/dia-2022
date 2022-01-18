@@ -10,11 +10,13 @@
     <p :style="{ fontWeight: isActive ? 'bold' : 'normal' }">
       Check for more details <a v-bind:href="url" :title="title">Here</a>
     </p>
-    <img v-bind:src="image" :alt="`Gambar ${title}`" />
+    <img v-if="!isActive" v-bind:src="image" :alt="`Gambar ${title}`" />
+    <img v-else-if="count > 2 && isActive" src="https://placeimg.com/250/250/nature" alt="Gambar Alam" />
+    <img v-else src="https://placeimg.com/250/250/animals" alt="Gambar Hewan" />
     <div>
       <button v-on:click="incrementCount">Tambah Count</button>
       <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
-      <button v-on:click="count--">Kurang Count</button>
+      <button v-show="count > 0" v-on:click="count--">Kurang Count</button>
     </div>
   </div>
 </template>
@@ -29,7 +31,7 @@ export default {
       lastName: 'Doe',
       countItem: 2,
       title: 'Vue 3',
-      image: 'https://via.placeholder.com/150/',
+      image: 'https://via.placeholder.com/250/',
       url: 'https://v3.vuejs.org/',
       count: 0,
       message: 'Message Count',
