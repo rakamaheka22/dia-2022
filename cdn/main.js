@@ -53,6 +53,52 @@ const App = {
     setTimeout(() => {
       this.incrementCount();
       this.fullName = 'John Cena';
+      this.lists = [
+        {
+          id: 1,
+          title: 'Bangun Tidur'
+        },
+        {
+          id: 2,
+          title: 'Nonton Kartun'
+        },
+        {
+          id: 3,
+          title: 'Mandi Pagi'
+        },
+        {
+          id: 4,
+          title: 'Berangkat Sekolah'
+        },
+        {
+          id: 5,
+          title: 'Istirahat Sekolah'
+        },
+        {
+          id: 6,
+          title: 'Ekstrakurikuler'
+        },
+        {
+          id: 7,
+          title: 'Pulang Sekolah'
+        },
+        {
+          id: 8,
+          title: 'Mandi Sore'
+        },
+        {
+          id: 9,
+          title: 'Makan Malam'
+        },
+        {
+          id: 10,
+          title: 'Mengerjakan PR'
+        },
+        {
+          id: 11,
+          title: 'Tidur'
+        }
+      ];
     }, 2000);
   },
   updated() {

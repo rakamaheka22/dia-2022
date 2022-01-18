@@ -27,6 +27,16 @@
             <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
             <button v-show="count > 0" v-on:click="count--">Kurang Count</button>
         </div>
+        <div>
+            <div v-if="lists.length < 1">
+                Loading...
+            </div>
+            <ul v-else>
+                <li v-for="(item, index) in lists" :key="index">
+                    {{ item.id }} {{ item.title }}
+                </li>
+            </ul>
+        </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./main.js"></script>

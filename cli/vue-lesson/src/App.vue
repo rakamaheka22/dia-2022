@@ -18,6 +18,16 @@
       <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
       <button v-show="count > 0" v-on:click="count--">Kurang Count</button>
     </div>
+    <div>
+      <div v-if="lists.length < 1">
+        Loading...
+      </div>
+      <ul v-else>
+        <li v-for="(item, index) in lists" :key="index">
+          {{ item.id }} {{ item.title }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -76,6 +86,52 @@ export default {
     setTimeout(() => {
       this.incrementCount();
       this.fullName = 'John Cena';
+      this.lists = [
+        {
+          id: 1,
+          title: 'Bangun Tidur'
+        },
+        {
+          id: 2,
+          title: 'Nonton Kartun'
+        },
+        {
+          id: 3,
+          title: 'Mandi Pagi'
+        },
+        {
+          id: 4,
+          title: 'Berangkat Sekolah'
+        },
+        {
+          id: 5,
+          title: 'Istirahat Sekolah'
+        },
+        {
+          id: 6,
+          title: 'Ekstrakurikuler'
+        },
+        {
+          id: 7,
+          title: 'Pulang Sekolah'
+        },
+        {
+          id: 8,
+          title: 'Mandi Sore'
+        },
+        {
+          id: 9,
+          title: 'Makan Malam'
+        },
+        {
+          id: 10,
+          title: 'Mengerjakan PR'
+        },
+        {
+          id: 11,
+          title: 'Tidur'
+        }
+      ];
     }, 2000);
   },
   updated() {
