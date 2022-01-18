@@ -28,6 +28,17 @@
         </li>
       </ul>
     </div>
+    <hr />
+    <div>
+      <label for="firstName">Input Text</label><br />
+      <input v-model="firstName" type="text" id="firstName" />
+      <input v-model.lazy="lastName" type="text" />
+      <input v-model.number="count" type="text" />
+    </div>
+    <div>
+      <label for="textarea">Textarea</label><br />
+      <textarea v-model="message" id="textarea"></textarea>
+    </div>
   </div>
 </template>
 
@@ -77,7 +88,8 @@ export default {
       if (newValue > 10) {
         this.messageCount = 'Count melebihi 10 item';
       }
-      if (newValue === 0) {
+      if (newValue <= 10) {
+        this.messageCount = '';
         this.isActive = false;
       }
     }
@@ -133,9 +145,6 @@ export default {
         }
       ];
     }, 2000);
-  },
-  updated() {
-      this.updateMessage('Message Updated! Count');
   },
   methods: {
     dynamicIncrementCount(count) {

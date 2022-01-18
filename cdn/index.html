@@ -37,6 +37,17 @@
                 </li>
             </ul>
         </div>
+        <hr />
+        <div>
+            <label for="firstName">Input Text</label><br />
+            <input v-model="firstName" type="text" id="firstName" />
+            <input v-model.lazy="lastName" type="text" />
+            <input v-model.number="count" type="text" />
+        </div>
+        <div>
+            <label for="textarea">Textarea</label><br />
+            <textarea v-model="message" id="textarea"></textarea>
+        </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./main.js"></script>

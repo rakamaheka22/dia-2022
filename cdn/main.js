@@ -44,7 +44,8 @@ const App = {
       if (newValue > 10) {
         this.messageCount = 'Count melebihi 10 item';
       }
-      if (newValue === 0) {
+      if (newValue <= 10) {
+        this.messageCount = '';
         this.isActive = false;
       }
     }
@@ -100,9 +101,6 @@ const App = {
         }
       ];
     }, 2000);
-  },
-  updated() {
-      this.updateMessage('Message Updated! Count');
   },
   methods: {
     dynamicIncrementCount(count) {
