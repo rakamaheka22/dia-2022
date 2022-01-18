@@ -4,8 +4,12 @@
 const App = {
   data() {
     return {
+      selected: '',
+      checkbox: false,
+      multicheckbox: [],
       firstName: 'John',
       lastName: 'Doe',
+      gender: '',
       countItem: 2,
       title: 'Vue 3',
       image: 'https://via.placeholder.com/250/',

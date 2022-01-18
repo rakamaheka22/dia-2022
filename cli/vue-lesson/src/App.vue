@@ -39,6 +39,31 @@
       <label for="textarea">Textarea</label><br />
       <textarea v-model="message" id="textarea"></textarea>
     </div>
+    <div>
+      <label for="radio">Radio {{ gender }}</label><br />
+      <input v-model="gender" type="radio" id="radio" value="male" /> Pria
+      <input v-model="gender" type="radio" id="radio" value="female" /> Wanita
+    </div>
+    <div>
+      <label for="checkbox">Checkbox</label><br />
+      <input v-model="checkbox" type="checkbox" id="checkbox" /> {{ checkbox }}
+    </div>
+    <div>
+      <label for="multicheckbox">Multi Checkbox {{ multicheckbox }}</label><br />
+      <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="english" /> English
+      <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="indonesian" /> Indonesian
+      <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="japanese" /> Japanese
+      <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="russian" /> Russian
+    </div>
+    <div>
+      <label for="selected">Select {{ selected }}</label><br />
+      <select v-model="selected" id="selected">
+          <option value="">Jenjang Pendidikan</option>
+          <option value="sd">SD</option>
+          <option value="smp">SMP</option>
+          <option value="sma">SMA</option>
+      </select>
+    </div>
   </div>
 </template>
 
@@ -48,8 +73,12 @@ export default {
   name: 'App',
   data() {
     return {
+      selected: '',
+      checkbox: false,
+      multicheckbox: [],
       firstName: 'John',
       lastName: 'Doe',
+      gender: '',
       countItem: 2,
       title: 'Vue 3',
       image: 'https://via.placeholder.com/250/',
