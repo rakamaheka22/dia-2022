@@ -40,18 +40,18 @@
         <hr />
         <div>
             <label for="firstName">Input Text</label><br />
-            <input v-model="firstName" type="text" id="firstName" />
-            <input v-model.lazy="lastName" type="text" />
+            <input v-model="firstName" type="text" id="firstName" @focus="onFocusElement" />
+            <input v-model.lazy="lastName" type="text" @blur="onBlurElement" />
             <input v-model.number="count" type="text" />
         </div>
         <div>
             <label for="textarea">Textarea</label><br />
-            <textarea v-model="message" id="textarea"></textarea>
+            <textarea v-model="message" id="textarea" @input="onInputElement"></textarea>
         </div>
         <div>
             <label for="radio">Radio {{ gender }}</label><br />
-            <input v-model="gender" type="radio" id="radio" value="male" /> Pria
-            <input v-model="gender" type="radio" id="radio" value="female" /> Wanita
+            <input v-model="gender" type="radio" id="radio" value="male" @change="onChangeElement" /> Pria
+            <input v-model="gender" type="radio" id="radio" value="female" @change="onChangeElement" /> Wanita
         </div>
         <div>
             <label for="checkbox">Checkbox</label><br />
@@ -66,7 +66,7 @@
         </div>
         <div>
             <label for="selected">Select {{ selected }}</label><br />
-            <select v-model="selected" id="selected">
+            <select v-model="selected" id="selected" @change="onChangeElement">
                 <option value="">Jenjang Pendidikan</option>
                 <option value="sd">SD</option>
                 <option value="smp">SMP</option>

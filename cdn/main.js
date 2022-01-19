@@ -119,6 +119,18 @@ const App = {
     },
     showItem() {
       return `Id: ${this.item.id} Title: ${this.item.title}`;
+    },
+    onChangeElement(event) {
+      console.log(event.target.value);
+    },
+    onInputElement(event) {
+      console.log(event.target.value);
+    },
+    onFocusElement(event) {
+      console.log(event);
+    },
+    onBlurElement(event)  {
+      console.log(event);
     }
   }
 };
