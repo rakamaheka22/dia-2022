@@ -5,10 +5,6 @@
 <script>
 export default {
   name: 'Header',
-  data() {
-    return {
-      title: 'Belajar Vue 3',
-    };
-  },
+  props: ['title'],
 }
 </script>

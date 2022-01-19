@@ -1,7 +1,7 @@
 <template>
   <!-- HTML -->
   <div>
-    <header-component></header-component>
+    <header-component title="Belajar Vue 3"></header-component>
     <search-box></search-box>
     <h2>{{ fullName }}</h2>
     <p>{{ message }} : {{ count }} {{ messageCount }}</p>

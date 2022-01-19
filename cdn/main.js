@@ -210,11 +210,7 @@ const App = {
 };
 
 const TitleComponent = {
-  data() {
-    return {
-      title: 'Belajar Vue 3',
-    };
-  },
+  props: ['title'],
   template: `
     <div>
       <h1>{{ title }}</h1>
@@ -232,10 +228,11 @@ const instance = Vue.createApp({
       },
       template: `
         <div>
-          <title-component></title-component>
+          <title-component :title="title"></title-component>
           <input v-model="search" type="text" />
         </div>
       `,
+      props: ['title'],
       data() {
         return {
           search: '',
