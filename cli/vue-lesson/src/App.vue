@@ -31,13 +31,13 @@
     <hr />
     <div>
       <label for="firstName">Input Text</label><br />
-      <input v-model="firstName" type="text" id="firstName" @focus="onFocusElement" />
+      <input v-model="firstName" type="text" id="firstName" @focus="onFocusElement" @keydown="onKey($event, 'keydown')" @keyup.enter="submit" />
       <input v-model.lazy="lastName" type="text" @blur="onBlurElement" />
       <input v-model.number="count" type="text" />
     </div>
     <div>
       <label for="textarea">Textarea</label><br />
-      <textarea v-model="message" id="textarea" @input="onInputElement"></textarea>
+      <textarea v-model="message" id="textarea" @input="onInputElement" @keypress="onKey($event, 'keypress')"></textarea>
     </div>
     <div>
       <label for="radio">Radio {{ gender }}</label><br />
@@ -58,10 +58,10 @@
     <div>
       <label for="selected">Select {{ selected }}</label><br />
       <select v-model="selected" id="selected" @change="onChangeElement">
-          <option value="">Jenjang Pendidikan</option>
-          <option value="sd">SD</option>
-          <option value="smp">SMP</option>
-          <option value="sma">SMA</option>
+        <option value="">Jenjang Pendidikan</option>
+        <option value="sd">SD</option>
+        <option value="smp">SMP</option>
+        <option value="sma">SMA</option>
       </select>
     </div>
   </div>
@@ -200,6 +200,13 @@ export default {
     },
     onBlurElement(event)  {
       console.log(event);
+    },
+    onKey(event, type) {
+      console.log(type);
+      console.log(event.key);
+    },
+    submit(event) {
+      console.log(event.target.value);
     }
   }
 }

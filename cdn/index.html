@@ -40,13 +40,13 @@
         <hr />
         <div>
             <label for="firstName">Input Text</label><br />
-            <input v-model="firstName" type="text" id="firstName" @focus="onFocusElement" />
+            <input v-model="firstName" type="text" id="firstName" @focus="onFocusElement" @keydown="onKey($event, 'keydown')" @keyup.enter="submit" />
             <input v-model.lazy="lastName" type="text" @blur="onBlurElement" />
             <input v-model.number="count" type="text" />
         </div>
         <div>
             <label for="textarea">Textarea</label><br />
-            <textarea v-model="message" id="textarea" @input="onInputElement"></textarea>
+            <textarea v-model="message" id="textarea" @input="onInputElement" @keypress="onKey($event, 'keypress')"></textarea>
         </div>
         <div>
             <label for="radio">Radio {{ gender }}</label><br />

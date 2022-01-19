@@ -131,6 +131,13 @@ const App = {
     },
     onBlurElement(event)  {
       console.log(event);
+    },
+    onKey(event, type) {
+      console.log(type);
+      console.log(event.key);
+    },
+    submit(event) {
+      console.log(event.target.value);
     }
   }
 };
