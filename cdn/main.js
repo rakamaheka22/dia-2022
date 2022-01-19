@@ -1,7 +1,24 @@
 // JS
 
+// Local Component
+const HeaderComponent = {
+  data() {
+    return {
+      title: 'Belajar Vue 3',
+    };
+  },
+  template: `
+    <template>
+      <h1>{{ title }}</h1>
+    </template>  
+  `
+}
+
 // Setup Instalasi Vue
 const App = {
+  component: {
+    'header-component': HeaderComponent,
+  },
   data() {
     return {
       selected: '',
@@ -142,4 +159,19 @@ const App = {
   }
 };
 
-Vue.createApp(App).mount('#app');
+const instance = Vue.createApp(App);
+
+// Register Global Component
+instance.component('search-box', {
+  template: `
+    <div>
+      <input v-model="search" type="text" />
+    </div>
+  `,
+  data() {
+    return {
+      search: '',
+    };
+  },
+});
+instance.mount('#app');

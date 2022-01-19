@@ -68,9 +68,15 @@
 </template>
 
 <script>
+// Local Component Registration
+import Header from './components/Header.vue';
+
 // JS
 export default {
   name: 'App',
+  component: {
+    'header-component': Header,
+  },
   data() {
     return {
       selected: '',
