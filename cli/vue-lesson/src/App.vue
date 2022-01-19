@@ -1,6 +1,8 @@
 <template>
   <!-- HTML -->
   <div>
+    <header-component></header-component>
+    <search-box></search-box>
     <h2>{{ fullName }}</h2>
     <p>{{ message }} : {{ count }} {{ messageCount }}</p>
     <span :class="[{ active: isActive }, { 'not-active': !isActive }]">Status : {{ status }}</span>
@@ -70,14 +72,16 @@
 <script>
 // Local Component Registration
 import Header from './components/Header.vue';
+import SearchBox from './components/SearchBox.vue';
 
 // JS
 export default {
   name: 'App',
-  component: {
+  components: {
     'header-component': Header,
   },
   data() {
+    SearchBox
     return {
       selected: '',
       checkbox: false,

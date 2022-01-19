@@ -1,8 +1,11 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './App.vue';
-
-// Global Component Registration
-Vue.component('SearchBox', () => import('./components/SearchBox.vue'));
+import SearchBox from './components/SearchBox.vue';
 
 // Setup Instalasi Vue
-Vue.createApp(App).mount('#app');
+const app = createApp(App);
+
+// Global Component Registration
+app.component('search-box', SearchBox);
+
+app.mount('#app');

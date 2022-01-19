@@ -1,24 +1,74 @@
 // JS
 
-// Local Component
-const HeaderComponent = {
-  data() {
-    return {
-      title: 'Belajar Vue 3',
-    };
-  },
-  template: `
-    <template>
-      <h1>{{ title }}</h1>
-    </template>  
-  `
-}
-
 // Setup Instalasi Vue
 const App = {
-  component: {
-    'header-component': HeaderComponent,
-  },
+  template:  `
+    <div>
+      <h2>{{ fullName }}</h2>
+      <p>{{ message }} : {{ count }} {{ messageCount }}</p>
+      <span :class="[{ active: isActive }, { 'not-active': !isActive }]">Status : {{ status }}</span>
+      <p>
+      {{ getItem }}
+      </p>
+      <p :style="{ fontWeight: isActive ? 'bold' : 'normal' }">
+          Check for more details <a v-bind:href="url" :title="title">Here</a>
+      </p>
+      <img v-if="!isActive" v-bind:src="image" :alt="title" />
+      <img v-else-if="count > 2 && isActive" src="https://placeimg.com/250/250/nature" alt="Gambar Alam" />
+      <img v-else src="https://placeimg.com/250/250/animals" alt="Gambar Hewan" />
+      <div>
+          <button v-on:click="incrementCount">Tambah Count</button>
+          <button @click="dynamicIncrementCount(countItem)">Tambah Count Bebas</button>
+          <button v-show="count > 0" v-on:click="count--">Kurang Count</button>
+      </div>
+      <div>
+          <div v-if="lists.length < 1">
+              Loading...
+          </div>
+          <ul v-else>
+              <li v-for="(item, index) in lists" :key="index">
+                  {{ item.id }} {{ item.title }}
+              </li>
+          </ul>
+      </div>
+      <hr />
+      <div>
+          <label for="firstName">Input Text</label><br />
+          <input v-model="firstName" type="text" id="firstName" @focus="onFocusElement" @keydown="onKey($event, 'keydown')" @keyup.enter="submit" />
+          <input v-model.lazy="lastName" type="text" @blur="onBlurElement" />
+          <input v-model.number="count" type="text" />
+      </div>
+      <div>
+          <label for="textarea">Textarea</label><br />
+          <textarea v-model="message" id="textarea" @input="onInputElement" @keypress="onKey($event, 'keypress')"></textarea>
+      </div>
+      <div>
+          <label for="radio">Radio {{ gender }}</label><br />
+          <input v-model="gender" type="radio" id="radio" value="male" @change="onChangeElement" /> Pria
+          <input v-model="gender" type="radio" id="radio" value="female" @change="onChangeElement" /> Wanita
+      </div>
+      <div>
+          <label for="checkbox">Checkbox</label><br />
+          <input v-model="checkbox" type="checkbox" id="checkbox" /> {{ checkbox }}
+      </div>
+      <div>
+          <label for="multicheckbox">Multi Checkbox {{ multicheckbox }}</label><br />
+          <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="english" /> English
+          <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="indonesian" /> Indonesian
+          <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="japanese" /> Japanese
+          <input v-model="multicheckbox" type="checkbox" id="multicheckbox" value="russian" /> Russian
+      </div>
+      <div>
+          <label for="selected">Select {{ selected }}</label><br />
+          <select v-model="selected" id="selected" @change="onChangeElement">
+              <option value="">Jenjang Pendidikan</option>
+              <option value="sd">SD</option>
+              <option value="smp">SMP</option>
+              <option value="sma">SMA</option>
+          </select>
+      </div>
+    </template>
+  `,
   data() {
     return {
       selected: '',
@@ -159,19 +209,40 @@ const App = {
   }
 };
 
-const instance = Vue.createApp(App);
-
-// Register Global Component
-instance.component('search-box', {
-  template: `
-    <div>
-      <input v-model="search" type="text" />
-    </div>
-  `,
+const TitleComponent = {
   data() {
     return {
-      search: '',
+      title: 'Belajar Vue 3',
     };
   },
+  template: `
+    <div>
+      <h1>{{ title }}</h1>
+    </div>  
+  `
+}
+
+const instance = Vue.createApp({
+  components: {
+    'main-component': App,
+    'search-box': {
+      components: {
+        // Register Local Component
+        'title-component': TitleComponent,
+      },
+      template: `
+        <div>
+          <title-component></title-component>
+          <input v-model="search" type="text" />
+        </div>
+      `,
+      data() {
+        return {
+          search: '',
+        };
+      },
+    }
+  }
 });
+
 instance.mount('#app');
