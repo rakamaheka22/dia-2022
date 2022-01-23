@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <Header :title="title" :description="description" :count="count" />
-    <SearchBox @result="onSearch($event)" />
+  <Main>
+    <template #header="{ title, description }">
+      <Header :title="title" :description="description" :count="count" />
+      <SearchBox @result="onSearch($event)" />
+    </template>
     <div class="list-item">
       <ul v-if="items.length > 0">
         <li v-for="(item, index) in items" :key="index">
@@ -9,10 +11,14 @@
         </li>
       </ul>
     </div>
-  </div>
+    <template #footer>
+      Copyright &copy; 2022
+    </template>
+  </Main>
 </template>
 
 <script>
+import Main from './layouts/Main.vue';
 import Header from './components/Header.vue';
 import Item from './components/Item.vue';
 import SearchBox from './components/SearchBox.vue';
@@ -21,15 +27,14 @@ export default {
   name: 'App',
   data() {
     return {
-      title: 'My Notes',
-      description: 'Catatan Kegiatan Harianku',
       items: [],
     };
   },
   components: {
     Header,
     SearchBox,
-    Item
+    Item,
+    Main
   },
   computed: {
     count() {
@@ -105,6 +110,15 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

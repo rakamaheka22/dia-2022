@@ -1,8 +1,8 @@
 <template>
-  <header>
+  <div>
     <h1>{{ title }}</h1>
     <p>{{ count }} {{ description }}</p>
-  </header>
+  </div>
 </template>
 
 <script>
