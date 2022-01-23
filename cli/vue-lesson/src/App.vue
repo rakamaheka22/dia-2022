@@ -1,16 +1,11 @@
 <template>
   <div>
-    <Header :title="title" :description="description" />
+    <Header :title="title" :description="description" :count="count" />
     <SearchBox @result="onSearch($event)" />
     <div class="list-item">
-      <ul>
+      <ul v-if="items.length > 0">
         <li v-for="(item, index) in items" :key="index">
-          <p>
-            {{ item.id }} {{ item.task }}
-          </p>
-          <span>
-            {{ item.isComplete }}
-          </span>
+          <Item :item="item" />
         </li>
       </ul>
     </div>
@@ -19,6 +14,7 @@
 
 <script>
 import Header from './components/Header.vue';
+import Item from './components/Item.vue';
 import SearchBox from './components/SearchBox.vue';
 
 export default {
@@ -32,7 +28,13 @@ export default {
   },
   components: {
     Header,
-    SearchBox
+    SearchBox,
+    Item
+  },
+  computed: {
+    count() {
+      return this.items.length;
+    }
   },
   mounted() {
     this.fetchData();
@@ -116,12 +118,5 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.list-item li {
-  padding: 8px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 </style>
