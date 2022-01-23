@@ -5,7 +5,7 @@
     <div class="list-item">
       <ul v-if="items.length > 0">
         <li v-for="(item, index) in items" :key="index">
-          <Item :item="item" />
+          <Item :item="item" @updateTask="updateTask($event)" />
         </li>
       </ul>
     </div>
@@ -94,6 +94,11 @@ export default {
       } else {
         this.fetchData();
       }
+    },
+    updateTask(item) {
+      const foundIndex = this.items
+        .findIndex(x => x.id == item.id);
+      this.items[foundIndex].isComplete = item.isComplete;
     }
   }
 }

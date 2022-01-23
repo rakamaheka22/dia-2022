@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <p :class="{ compeleted: item.isComplete }">
+    <p :class="{ compeleted: item.isComplete }" @click="updateTask(item.id)">
       {{ item.id }} {{ item.task }}
     </p>
     <span :class="{
@@ -31,6 +31,14 @@ export default {
     status() {
       return this.item.isComplete ? 'Sudah Tercapai' : 'Belum Tercapai';
     }
+  },
+  methods: {
+    updateTask(id) {
+      this.$emit('updateTask', {
+        id,
+        isComplete: true
+      })
+    }
   }
 }
 </script>
@@ -53,5 +61,9 @@ export default {
 
 .compeleted {
   text-decoration: line-through;
+}
+
+p {
+  cursor: pointer;
 }
 </style>
