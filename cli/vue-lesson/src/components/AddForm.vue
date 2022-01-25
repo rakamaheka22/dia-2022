@@ -22,6 +22,10 @@ export default {
     addNote() {
       console.log(this.note);
       console.log(this.capitalizeWords(this.note));
+      this.$moshaToast('Berhasil Menambahkan Note', {
+        position: 'bottom-center',
+        type: 'success'
+      });
     }
   }
 }
