@@ -1,18 +1,29 @@
 <template>
-  <form class="form-note">
+  <div class="form-note">
     <div>
       <label for="input">Note : </label>
-      <input type="text" id="input" />
+      <input v-model="note" type="text" id="input" />
     </div>
-    <button>
+    <button @click="addNote">
       Add Note
     </button>
-  </form>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'AddForm',
+  data() {
+    return {
+      note: ''
+    }
+  },
+  methods: {
+    addNote() {
+      console.log(this.note);
+      console.log(this.capitalizeWords(this.note));
+    }
+  }
 }
 </script>
 
