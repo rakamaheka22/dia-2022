@@ -1,6 +1,12 @@
 <template>
-  <form>
-      test
+  <form class="form-note">
+    <div>
+      <label for="input">Note : </label>
+      <input type="text" id="input" />
+    </div>
+    <button>
+      Add Note
+    </button>
   </form>
 </template>
 
@@ -10,6 +16,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.form-note button {
+  margin-top: 16px;
+}
 </style>

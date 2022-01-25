@@ -18,11 +18,13 @@
       </button>
     </div>
     <div class="tab-view-wrapper">
-      <component
-        :is="currentTab"
-        :items="items"
-        @updateTask="items = $event"
-      ></component>
+      <keep-alive>
+        <component
+          :is="currentTab"
+          :items="items"
+          @updateTask="items = $event"
+        ></component>
+      </keep-alive>
     </div>
     <template #footer>
       Copyright &copy; 2022
