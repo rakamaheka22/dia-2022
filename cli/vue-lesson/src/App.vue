@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 import Main from './layouts/Main.vue';
 import Header from './components/Header.vue';
 import SearchBox from './components/SearchBox.vue';
@@ -59,6 +61,11 @@ export default {
   computed: {
     count() {
       return this.items.length;
+    }
+  },
+  provide() {
+    return {
+      count: computed(() => this.items.length)
     }
   },
   mounted() {

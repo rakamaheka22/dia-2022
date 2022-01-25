@@ -1,8 +1,13 @@
 <template>
   <div class="item">
-    <p :class="{ compeleted: item.isComplete }" @click="updateTask(item.id)">
-      {{ item.id }} {{ item.task }}
-    </p>
+    <div>
+      <p :class="{ compeleted: item.isComplete }" @click="updateTask(item.id)">
+        {{ item.id }} {{ item.task }}
+      </p>
+      <span class="item-count">
+        Note {{ item.id }}/{{ count }}
+      </span>
+    </div>
     <span :class="{
       'status-completed': item.isComplete,
       'status-not-completed': !item.isComplete
@@ -27,6 +32,7 @@ export default {
       }
     }
   },
+  inject: ['count'],
   computed: {
     status() {
       return this.item.isComplete ? 'Sudah Tercapai' : 'Belum Tercapai';
@@ -49,6 +55,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.item-count {
+  font-size: 0.9rem;
+  color: #a2a2a2;
 }
 
 .status-completed {
