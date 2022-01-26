@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div>
-      <p :class="{ compeleted: item.isComplete }" @click="updateTask(item.id)">
+      <p :class="{ compeleted: item.isComplete }" @click="updateTask(item)">
         {{ item.id }} {{ item.task }}
       </p>
       <span class="item-count">
@@ -39,11 +39,15 @@ export default {
     }
   },
   methods: {
-    updateTask(id) {
-      this.$emit('updateTask', {
-        id,
-        isComplete: true
-      })
+    updateTask(item) {
+      if (item.isComplete) {
+        this.$router.push(`/${item.id}`)
+      } else {
+        this.$emit('updateTask', {
+          id: item.id,
+          isComplete: true
+        });
+      }
     }
   }
 }
