@@ -7,6 +7,7 @@ const mixins = {
       }).join(' ');
     },
     async callApi() {
+      console.log(this.$store.state.count);
       const res = await this.axios.get('Sheet1');
       const { data } = res;
 

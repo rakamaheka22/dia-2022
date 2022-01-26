@@ -11,10 +11,12 @@ axios.defaults.baseURL = 'https://api.steinhq.com/v1/storages/61f180428d29ba2379
 
 import mixins from './mixins';
 import router from './router';
+import store from './store';
 
 // Setup Instalasi Vue
 const app = createApp(App);
 app.mixin(mixins);
+app.use(store);
 app.use(router);
 app.use(moshaToast);
 app.use(VueAxios, axios);
