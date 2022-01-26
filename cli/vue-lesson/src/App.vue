@@ -1,8 +1,20 @@
 <template>
   <div>
     <nav class="menu">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/" v-slot="{ isActive }">
+        <span :class="{
+          active: isActive
+        }">
+          Home
+        </span>
+      </router-link>
+      <router-link to="/about" v-slot="{ isActive }">
+        <span :class="{
+          active: isActive
+        }">
+          About
+        </span>
+      </router-link>
     </nav>
     <router-view></router-view>
   </div>
@@ -48,7 +60,7 @@ body {
   text-decoration: none;
 }
 
-.menu a:hover, .menu a:focus {
+.menu a:hover, .menu a:focus, .active {
   color: #00c180;
 }
 </style>
