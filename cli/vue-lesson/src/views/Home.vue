@@ -72,8 +72,8 @@ export default {
     this.fetchData();
   },
   methods: {
-    fetchData() {
-      this.items = this.callApi();
+    async fetchData() {
+      this.items = await this.callApi();
     },
     onSearch(result) {
       if (result) {

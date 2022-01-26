@@ -24,8 +24,8 @@ export default {
       },
     };
   },
-  mounted() {
-    this.selectedData = this.callApi()
+  async mounted() {
+    this.selectedData = await this.callApi()
       .filter((item) => {
         return item.id === parseInt(this.id, 10)
       })[0];
