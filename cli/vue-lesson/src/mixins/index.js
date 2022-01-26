@@ -7,8 +7,8 @@ const mixins = {
       }).join(' ');
     },
     async callApi() {
-      const res = await fetch('https://api.steinhq.com/v1/storages/61f180428d29ba2379165adb/Sheet1');
-      const data = await res.json();
+      const res = await this.axios.get('Sheet1');
+      const { data } = res;
 
       return data.map((item) => {
         if (item.isComplete === 'FALSE') {
