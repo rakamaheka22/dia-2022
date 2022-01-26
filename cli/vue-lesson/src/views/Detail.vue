@@ -4,9 +4,10 @@
     <h2>
       {{ selectedData.task }}
     </h2>
-    <router-link to="/">
-      <button>Back to Home</button>
+    <router-link :to="`/${id}/edit`">
+      <button>Edit</button>
     </router-link>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -28,8 +29,6 @@ export default {
       .filter((item) => {
         return item.id === parseInt(this.id, 10)
       })[0];
-
-
   }
 }
 </script>
@@ -37,5 +36,9 @@ export default {
 <style scoped>
 .detail {
   padding: 16px;
+}
+
+button {
+  margin-bottom: 16px;
 }
 </style>
