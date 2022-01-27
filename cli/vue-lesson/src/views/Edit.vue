@@ -2,7 +2,7 @@
   <div class="edit">
     <h4>Edit Catatan {{ $route.params.id }}</h4>
     <input v-model="selectedData.task" type="text" />
-    <button>Edit</button>
+    <button @click="updateTask">Edit</button>
     <div style="margin-top: 16px;">
       <button @click="goToHome">Back to Home</button>
     </div>
@@ -22,14 +22,23 @@ export default {
     };
   },
   async mounted() {
-    this.selectedData = await this.callApi()
-      .filter((item) => {
-        return item.id === parseInt(this.$route.params.id, 10)
-      })[0];
+    const res = await this.$store.dispatch('findNotesById', this.$route.params.id);
+    if (res) {
+      this.selectedData = this.$store.getters.getNote;
+    }
   },
   methods: {
     goToHome() {
       this.$router.push('/');
+    },
+    async updateTask() {
+      const res = await this.$store.dispatch('updateNote', {
+        id: this.$route.params.id,
+        task: this.selectedData.task
+      });
+      if (res) {
+        this.$router.push('/');
+      }
     }
   },
 };

@@ -19,13 +19,20 @@ export default {
     }
   },
   methods: {
-    addNote() {
-      console.log(this.note);
-      console.log(this.capitalizeWords(this.note));
-      this.$moshaToast('Berhasil Menambahkan Note', {
-        position: 'bottom-center',
-        type: 'success'
+    async addNote() {
+      const res = await this.$store.dispatch('addNote', {
+        id: this.$store.getters.getCount + 1,
+        task: this.capitalizeWords(this.note)
       });
+      if (res) {
+        this.$moshaToast('Berhasil Menambahkan Note', {
+          position: 'bottom-center',
+          type: 'success'
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
+      }
     }
   }
 }

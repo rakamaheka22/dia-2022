@@ -32,10 +32,12 @@ export default {
       }
     }
   },
-  inject: ['count'],
   computed: {
     status() {
       return this.item.isComplete ? 'Sudah Tercapai' : 'Belum Tercapai';
+    },
+    count() {
+      return this.$store.getters.getCount;
     }
   },
   methods: {

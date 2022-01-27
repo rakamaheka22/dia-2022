@@ -14,10 +14,11 @@ export default {
       required: true,
     },
     description: String,
-    count: {
-      type: Number,
-      default: 0,
-    },
   },
+  computed: {
+    count() {
+      return this.$store.getters.getCount;
+    }
+  }
 }
 </script>

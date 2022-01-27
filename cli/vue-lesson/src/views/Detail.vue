@@ -25,10 +25,10 @@ export default {
     };
   },
   async mounted() {
-    this.selectedData = await this.callApi()
-      .filter((item) => {
-        return item.id === parseInt(this.id, 10)
-      })[0];
+    const res = await this.$store.dispatch('findNotesById', this.id);
+    if (res) {
+      this.selectedData = this.$store.getters.getNote;
+    }
   }
 }
 </script>

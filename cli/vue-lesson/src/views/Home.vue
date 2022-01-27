@@ -1,7 +1,7 @@
 <template>
   <Main>
     <template #header="{ title, description }">
-      <Header :title="title" :description="description" :count="count" />
+      <Header :title="title" :description="description" />
       <SearchBox @result="onSearch($event)" />
     </template>
     <div class="tab-button-wrapper">
@@ -58,22 +58,15 @@ export default {
     List,
     AddForm
   },
-  computed: {
-    count() {
-      return this.items.length;
-    }
-  },
-  provide() {
-    return {
-      count: computed(() => this.items.length)
-    }
-  },
   mounted() {
     this.fetchData();
   },
   methods: {
     async fetchData() {
-      this.items = await this.callApi();
+      const res = await this.$store.dispatch('fetchNotes');
+      if (res) {
+        this.items = this.$store.getters.getListNotes;
+      }
     },
     onSearch(result) {
       if (result) {
