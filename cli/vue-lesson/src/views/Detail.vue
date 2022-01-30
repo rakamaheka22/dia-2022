@@ -25,9 +25,9 @@ export default {
     };
   },
   async mounted() {
-    const res = await this.$store.dispatch('findNotesById', this.id);
+    const res = await this.$store.dispatch('notes/findNotesById', this.id);
     if (res) {
-      this.selectedData = this.$store.getters.getNote;
+      this.selectedData = this.$store.getters['notes/getNote'];
     }
   }
 }

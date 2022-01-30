@@ -22,9 +22,9 @@ export default {
     };
   },
   async mounted() {
-    const res = await this.$store.dispatch('findNotesById', this.$route.params.id);
+    const res = await this.$store.dispatch('notes/findNotesById', this.$route.params.id);
     if (res) {
-      this.selectedData = this.$store.getters.getNote;
+      this.selectedData = this.$store.getters['notes/getNote'];
     }
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
       this.$router.push('/');
     },
     async updateTask() {
-      const res = await this.$store.dispatch('updateNote', {
+      const res = await this.$store.dispatch('notes/updateNote', {
         id: this.$route.params.id,
         task: this.selectedData.task
       });

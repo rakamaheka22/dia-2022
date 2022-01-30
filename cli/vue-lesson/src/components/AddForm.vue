@@ -20,8 +20,8 @@ export default {
   },
   methods: {
     async addNote() {
-      const res = await this.$store.dispatch('addNote', {
-        id: this.$store.getters.getCount + 1,
+      const res = await this.$store.dispatch('notes/addNote', {
+        id: this.$store.getters['notes/getCount'] + 1,
         task: this.capitalizeWords(this.note)
       });
       if (res) {

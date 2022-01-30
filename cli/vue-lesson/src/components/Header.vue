@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     count() {
-      return this.$store.getters.getCount;
+      return this.$store.getters['notes/getCount'];
     }
   }
 }

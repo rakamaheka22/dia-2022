@@ -63,9 +63,9 @@ export default {
   },
   methods: {
     async fetchData() {
-      const res = await this.$store.dispatch('fetchNotes');
+      const res = await this.$store.dispatch('notes/fetchNotes');
       if (res) {
-        this.items = this.$store.getters.getListNotes;
+        this.items = this.$store.getters['notes/getListNotes'];
       }
     },
     onSearch(result) {

@@ -37,7 +37,7 @@ export default {
       return this.item.isComplete ? 'Sudah Tercapai' : 'Belum Tercapai';
     },
     count() {
-      return this.$store.getters.getCount;
+      return this.$store.getters['notes/getCount'];
     }
   },
   methods: {
