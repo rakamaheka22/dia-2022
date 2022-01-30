@@ -4,6 +4,7 @@ import notes from './modules/notes';
 import { auth } from '../firebase';
 
 import {
+    signOut,
     updateProfile,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -74,7 +75,15 @@ const store = createStore({
             } catch (error) {
                 return false;
             }
-        }
+        },
+        async logout({}) {
+            try {
+                await signOut(auth);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        },
     },
     modules: {
         notes

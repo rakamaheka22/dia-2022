@@ -2,14 +2,15 @@
   <div>
     <h1>{{ title }}</h1>
     <p>{{ count }} {{ description }}</p>
-    <router-link to="/login">
+    <router-link v-if="!user" to="/login">
       Go to Login
     </router-link>
+    <button v-else @click="doLogout">Logout</button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Header',
@@ -22,8 +23,18 @@ export default {
   },
   computed: {
     ...mapGetters({
-      count: 'getCount'
+      count: 'getCount',
+      user: 'getUserInfo'
     }),
+  },
+  methods: {
+    ...mapActions([
+      'logout'
+    ]),
+    async doLogout() {
+      await this.logout();
+      location.reload();
+    }
   }
 }
 </script>
