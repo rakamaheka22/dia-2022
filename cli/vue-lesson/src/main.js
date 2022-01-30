@@ -7,11 +7,13 @@ import 'mosha-vue-toastify/dist/style.css';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
-axios.defaults.baseURL = 'https://api.steinhq.com/v1/storages/61f180428d29ba2379165adb/';
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 import mixins from './mixins';
 import router from './router';
 import store from './store';
+
+import './firebase';
 
 // Setup Instalasi Vue
 const app = createApp(App);

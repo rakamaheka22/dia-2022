@@ -1,6 +1,13 @@
 import { createStore } from 'vuex';
 import notes from './modules/notes';
 
+import { auth } from '../firebase';
+
+import {
+    updateProfile,
+    createUserWithEmailAndPassword
+} from 'firebase/auth';
+
 const store = createStore({
     state: () => ({
         count: 0,
@@ -18,6 +25,21 @@ const store = createStore({
         SET_YEAR: (state, value) => {
             state.year = value;
         },
+    },
+    actions: {
+        async register({}, payload) {
+            const { email, password, name } = payload;
+            try {
+                if (email && password) {
+                    const data = await createUserWithEmailAndPassword(auth, email, password);
+
+                    await updateProfile(data.user, {displayName: name});
+                    return true;
+                }
+            } catch (error) {
+                return false;
+            }
+        }
     },
     modules: {
         notes
