@@ -18,9 +18,6 @@ const getters = {
     getListNotes: (state) => {
         return state.listNotes;
     },
-    getCount: (state) => {
-        return state.listNotes.length;
-    },
     getNote: (state) => {
         return state.note;
     }
@@ -42,6 +39,7 @@ const actions = {
             });
 
             commit('SET_LIST_NOTES', mapData);
+            commit('SET_COUNT', mapData.length, { root: true })
 
             return true;
         } catch (error) {
