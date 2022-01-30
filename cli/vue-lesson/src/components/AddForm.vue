@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'AddForm',
   data() {
@@ -18,10 +20,15 @@ export default {
       note: ''
     }
   },
+  computed: {
+    ...mapGetters({
+      count: 'getCount'
+    }),
+  },
   methods: {
     async addNote() {
       const res = await this.$store.dispatch('notes/addNote', {
-        id: this.$store.getters.getCount + 1,
+        id: this.count + 1,
         task: this.capitalizeWords(this.note)
       });
       if (res) {

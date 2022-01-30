@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Edit',
   data() {
@@ -21,18 +23,27 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters({
+      getNote: 'notes/getNote'
+    })
+  },
   async mounted() {
-    const res = await this.$store.dispatch('notes/findNotesById', this.$route.params.id);
+    const res = await this.findNotesById(this.$route.params.id);
     if (res) {
-      this.selectedData = this.$store.getters['notes/getNote'];
+      this.selectedData = this.getNote;
     }
   },
   methods: {
+    ...mapActions({
+      findNotesById: 'notes/findNotesById',
+      updateNote: 'notes/updateNote'
+    }),
     goToHome() {
       this.$router.push('/');
     },
     async updateTask() {
-      const res = await this.$store.dispatch('notes/updateNote', {
+      const res = await this.updateNote({
         id: this.$route.params.id,
         task: this.selectedData.task
       });

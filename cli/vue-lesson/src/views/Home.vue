@@ -27,13 +27,13 @@
       </keep-alive>
     </div>
     <template #footer>
-      Copyright &copy; 2022
+      Copyright &copy; {{ year }}
     </template>
   </Main>
 </template>
 
 <script>
-import { computed } from 'vue';
+import { mapState, mapActions, mapGetters, mapMutations } from 'vuex';
 
 import Main from '../layouts/Main.vue';
 import Header from '../components/Header.vue';
@@ -58,14 +58,29 @@ export default {
     List,
     AddForm
   },
+  computed: {
+    ...mapState([
+      'year'
+    ]),
+    ...mapGetters({
+      getListNotes: 'notes/getListNotes',
+    })
+  },
   mounted() {
+    this.SET_YEAR(2024);
     this.fetchData();
   },
   methods: {
+    ...mapMutations([
+      'SET_YEAR'
+    ]),
+    ...mapActions({
+      fetchNotes: 'notes/fetchNotes',
+    }),
     async fetchData() {
-      const res = await this.$store.dispatch('notes/fetchNotes');
+      const res = await this.fetchNotes();
       if (res) {
-        this.items = this.$store.getters['notes/getListNotes'];
+        this.items = this.getListNotes;
       }
     },
     onSearch(result) {

@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Item',
   props: {
@@ -33,11 +35,11 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      count: 'getCount'
+    }),
     status() {
       return this.item.isComplete ? 'Sudah Tercapai' : 'Belum Tercapai';
-    },
-    count() {
-      return this.$store.getters.getCount;
     }
   },
   methods: {

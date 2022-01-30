@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Header',
   props: {
@@ -16,9 +18,9 @@ export default {
     description: String,
   },
   computed: {
-    count() {
-      return this.$store.getters.getCount;
-    }
+    ...mapGetters({
+      count: 'getCount'
+    }),
   }
 }
 </script>

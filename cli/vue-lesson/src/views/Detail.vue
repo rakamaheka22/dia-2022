@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Detail',
   props: ['id'],
@@ -24,11 +26,21 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters({
+      getNote: 'notes/getNote'
+    })
+  },
   async mounted() {
-    const res = await this.$store.dispatch('notes/findNotesById', this.id);
+    const res = await this.findNotesById(this.id);
     if (res) {
-      this.selectedData = this.$store.getters['notes/getNote'];
+      this.selectedData = this.getNote;
     }
+  },
+  methods: {
+    ...mapActions({
+      findNotesById: 'notes/findNotesById'
+    })
   }
 }
 </script>
