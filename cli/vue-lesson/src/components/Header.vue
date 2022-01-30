@@ -2,6 +2,9 @@
   <div>
     <h1>{{ title }}</h1>
     <p>{{ count }} {{ description }}</p>
+    <router-link to="/login">
+      Go to Login
+    </router-link>
   </div>
 </template>
 

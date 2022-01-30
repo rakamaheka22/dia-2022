@@ -20,6 +20,12 @@ export default {
       title: 'My Notes',
       description: 'Catatan Kegiatan Harianku',
     }
+  },
+  async mounted() {
+    const res = await this.$store.dispatch('isUserLoggon');
+    if (res) {
+      this.title = await `${this.$store.getters.getUserInfo?.displayName} Notes`;
+    }
   }
 }
 </script>
