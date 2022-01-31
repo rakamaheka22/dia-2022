@@ -72,7 +72,6 @@
 <script>
 // Local Component Registration
 import Header from './components/Header.vue';
-import SearchBox from './components/SearchBox.vue';
 
 // JS
 export default {
@@ -81,7 +80,6 @@ export default {
     'header-component': Header,
   },
   data() {
-    SearchBox
     return {
       selected: '',
       checkbox: false,
