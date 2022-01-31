@@ -3,7 +3,7 @@
     <h1>{{ title }}</h1>
     <p>{{ count }} {{ description }}</p>
     <router-link v-if="!user" to="/login">
-      Go to Login
+      <button>Go to Login</button>
     </router-link>
     <button v-else @click="doLogout">Logout</button>
   </div>
@@ -38,3 +38,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+button {
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  background: transparent;
+  color: #ffffff;
+}
+</style>

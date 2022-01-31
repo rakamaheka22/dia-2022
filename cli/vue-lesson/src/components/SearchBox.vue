@@ -24,3 +24,21 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+input {
+  border: 0;
+  border-radius: 5px;
+  height: 32px;
+  padding: 5px 16px;
+}
+
+button {
+  margin-left: 10px;
+  height: 32px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  background: transparent;
+}
+</style>
